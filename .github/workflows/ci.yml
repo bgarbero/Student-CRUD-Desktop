@@ -30,7 +30,11 @@ jobs:
       - name: Análise Sonar
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn sonar:sonar
+        run: >
+          mvn -B verify sonar:sonar
+          -Dsonar.host.url=https://sonarcloud.io
+          -Dsonar.organization=bgarbero
+          -Dsonar.projectKey=bgarbero_Student-CRUD-Desktop
 
   ui:
     name: UI - Build, Test & Sonar
